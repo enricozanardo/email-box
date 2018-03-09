@@ -3,6 +3,5 @@ import:
 - package: github.com/spf13/viper
 - package: github.com/goinggo/tracelog
 - package: github.com/onezerobinary/email-box/proto
-- package: github.com/onezerobinary/db-box/proto/account
-- package: google.golang.org/grpc
 - package: github.com/onezerobinary/email-box/email
+- package: google.golang.org/grpc
