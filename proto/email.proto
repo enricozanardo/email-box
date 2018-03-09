@@ -1,0 +1,19 @@
+// protoc -I proto/ proto/email.proto --go_out=plugins=grpc:proto
+
+syntax = "proto3";
+package proto;
+
+service EmailService {
+    // Send a Email to an Account returns Response
+    rpc SendEmail (Recipient) returns (EmailResponse) {}
+}
+
+message EmailResponse {
+    int32 code = 1;
+}
+
+message Recipient {
+    string email = 1;
+    string token = 2;
+    int32 template = 3;
+}
