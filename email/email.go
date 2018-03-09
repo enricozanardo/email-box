@@ -11,7 +11,6 @@ import (
 
 var auth smtp.Auth
 
-//Request struct
 type Request struct {
 	from    string
 	to      []string
@@ -86,9 +85,9 @@ func SendConfirmRegistrationEmail(email string, token string) bool {
 	}
 
 	textBody := "Thank you! We have received a request from this email account: " + email + " for " +
-		"registering to the OneZero Binary website. In order to enable your account you have to confirm " +
+		"registering to the PulseRescue System. In order to enable your account you have to confirm " +
 		"it clicking on the following link: " + url + " within the 23:59 of the current day." +
-		"Hope to see you soon! OneZero Binary Team"
+		"Hope to see you soon! PulseLab Team"
 
 	r := NewRequest([]string{email}, "Confirm Registration", textBody)
 
@@ -102,4 +101,3 @@ func SendConfirmRegistrationEmail(email string, token string) bool {
 
 	return ok
 }
-
