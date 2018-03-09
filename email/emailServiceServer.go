@@ -4,6 +4,7 @@ import (
 	"context"
 	pb_email "github.com/onezerobinary/email-box/proto"
 	"errors"
+	"time"
 )
 
 type EmailServiceServer struct {
@@ -15,6 +16,8 @@ func (s *EmailServiceServer) SendEmail(ctx context.Context, recipient *pb_email.
 	emailResponse := pb_email.EmailResponse{}
 
 	ok := SendConfirmRegistrationEmail(recipient.Email, recipient.Token)
+
+	time.Sleep(2 * time.Second)
 
 	if !ok {
 		emailResponse.Code = 400
