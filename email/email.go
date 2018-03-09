@@ -93,7 +93,7 @@ func SendConfirmRegistrationEmail(email string, token string) bool {
 	r := NewRequest([]string{email}, "Confirm Registration", textBody)
 
 	//err := r.ParseTemplate("./template.html", templateData)
-	err := r.ParseTemplate("../template/template.html", templateData)
+	err := r.ParseTemplate("../templates/template.html", templateData)
 
 	if err != nil {
 		tracelog.Errorf(err, "email", "SendConfirmRegistrationEmail", "Error parsing the template")
