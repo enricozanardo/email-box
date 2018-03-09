@@ -4,6 +4,7 @@ import (
 	"testing"
 	pb_email "github.com/onezerobinary/email-box/proto"
 	"github.com/goinggo/tracelog"
+	"time"
 )
 
 func TestEmailServiceServer_SendEmail(t *testing.T) {
@@ -14,6 +15,8 @@ func TestEmailServiceServer_SendEmail(t *testing.T) {
 	recipient := pb_email.Recipient{"ezanardo@onezerobinary.com", "1234", 0}
 
 	ok := SendConfirmRegistrationEmail(recipient.Email, recipient.Token)
+
+	time.Sleep(10 * time.Second)
 
 	if !ok {
 		t.Errorf("Error to send the email")

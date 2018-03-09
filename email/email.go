@@ -62,8 +62,7 @@ func (r *Request) ParseTemplate(templateFileName string, data interface{}) error
 func SendConfirmRegistrationEmail(email string, token string) bool {
 
 	viper.SetConfigName("config")
-	//viper.AddConfigPath("../")
-	viper.AddConfigPath("./")
+	viper.AddConfigPath("../")
 
 	if err := viper.ReadInConfig(); err != nil {
 		tracelog.Errorf(err, "email", "SendConfirmRegistrationEmail", "Error reading config file")
