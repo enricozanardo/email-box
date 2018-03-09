@@ -21,5 +21,7 @@ func (s *EmailServiceServer) SendEmail(ctx context.Context, recipient *pb_email.
 		return &emailResponse, errors.New("It was not possible to send the email")
 	}
 
+	emailResponse.Code = 200
+
 	return &emailResponse, nil
 }
