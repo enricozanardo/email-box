@@ -61,16 +61,6 @@ func (r *Request) ParseTemplate(templateFileName string, data interface{}) error
 
 func SendConfirmRegistrationEmail(email string, token string) bool {
 
-	viper.SetConfigName("config")
-	viper.AddConfigPath("../")
-
-	if err := viper.ReadInConfig(); err != nil {
-		viper.AddConfigPath("./")
-
-		if err := viper.ReadInConfig(); err != nil {
-			tracelog.Errorf(err, "email", "SendConfirmRegistrationEmail", "Error reading config file")
-		}
-	}
 
 	// Set in Rancher a variable URL http://172.104.230.81/confirm?k=
 	url := os.Getenv("URL")

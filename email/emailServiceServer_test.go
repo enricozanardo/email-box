@@ -5,12 +5,20 @@ import (
 	pb_email "github.com/onezerobinary/email-box/proto"
 	"github.com/goinggo/tracelog"
 	"time"
+	"github.com/spf13/viper"
 )
 
 func TestEmailServiceServer_SendEmail(t *testing.T) {
 
 	tracelog.Start(tracelog.LevelTrace)
 	defer tracelog.Stop()
+
+	viper.SetConfigName("config")
+	viper.AddConfigPath("../")
+
+	if err := viper.ReadInConfig(); err != nil {
+		tracelog.Errorf(err, "main", "main", "Error reading config file")
+	}
 
 	recipient := pb_email.Recipient{"ezanardo@onezerobinary.com", "1234", 0}
 

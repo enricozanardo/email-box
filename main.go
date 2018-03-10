@@ -7,6 +7,7 @@ import (
 	"google.golang.org/grpc"
 	pb_email "github.com/onezerobinary/email-box/proto"
 	"github.com/onezerobinary/email-box/email"
+	"github.com/spf13/viper"
 )
 
 const (
@@ -17,6 +18,13 @@ func main(){
 
 	tracelog.Start(tracelog.LevelTrace)
 	defer tracelog.Stop()
+
+	viper.SetConfigName("config")
+	viper.AddConfigPath(".")
+
+	if err := viper.ReadInConfig(); err != nil {
+		tracelog.Errorf(err, "main", "main", "Error reading config file")
+	}
 
 	listen, err := net.Listen("tcp", GRPC_PORT)
 	if err != nil {
