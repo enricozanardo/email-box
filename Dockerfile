@@ -15,5 +15,6 @@ RUN cd $SRC_DIR; glide install
 RUN cd $SRC_DIR; cp -R templates /app/.
 RUN cd $SRC_DIR; cp config.yaml /app/.
 
+# Run the application
 RUN cd $SRC_DIR; go build -o email-box; cp email-box /app/
 ENTRYPOINT ["./email-box"]
